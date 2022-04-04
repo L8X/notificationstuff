@@ -16,21 +16,21 @@ local CoreGui = cloneref(game:GetService("CoreGui"))
 local Debris = cloneref(game:GetService("Debris"))
 
 return function(Arguments)
-	coroutine.resume(coroutine.create(function()
+	task.spawn(coroutine.create(function()
 		local Text = Arguments.Text or "lorem ipsum"
 		local Duration = Arguments.Duration or 5
 
 		-- Instances:
 
 		local ScreenGui = CoreGui:FindFirstChild("Error") or Instance.new("ScreenGui", CoreGui)
-		local ErrorMessage = Instance.new("Frame")
-		local TextSizeConstraint = Instance.new("UISizeConstraint")
-		local AsspectRatioConstraint = Instance.new("UIAspectRatioConstraint")
-		local ErrorText = Instance.new("TextLabel")
-		local TextSizeConstraint_2 = Instance.new("UITextSizeConstraint")
-		local SizeConstraint = Instance.new("UISizeConstraint")
-		local ErrorIcon = Instance.new("ImageLabel")
-		local AsspectRatioConstraint_2 = Instance.new("UIAspectRatioConstraint")
+		local ErrorMessage = cloneref(Instance.new("Frame"))
+		local TextSizeConstraint = cloneref(Instance.new("UISizeConstraint"))
+		local AsspectRatioConstraint = cloneref(Instance.new("UIAspectRatioConstraint"))
+		local ErrorText = cloneref(Instance.new("TextLabel"))
+		local TextSizeConstraint_2 = cloneref(Instance.new("UITextSizeConstraint"))
+		local SizeConstraint = cloneref(Instance.new("UISizeConstraint"))
+		local ErrorIcon = cloneref(Instance.new("ImageLabel"))
+		local AsspectRatioConstraint_2 = cloneref(Instance.new("UIAspectRatioConstraint"))
 
 		--Properties:
 
