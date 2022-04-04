@@ -12,7 +12,16 @@ local cloneref = cloneref or function(ref)
 end
 
 local TweenService = cloneref(game:GetService("TweenService"))
-local CoreGui = cloneref(game:GetService("CoreGui"))
+local CoreGui
+
+pcall(function()
+if gethui and identifyexecutor() == "ScriptWare" then
+CoreGui = cloneref(gethui())
+else
+CoreGui = cloneref(game:GetService("CoreGui"))
+end
+end)
+
 local Debris = cloneref(game:GetService("Debris"))
 
 return function(Arguments)
