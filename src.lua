@@ -40,7 +40,7 @@ return function(Arguments)
 			Tween:Play()
 		end
 
-		ScreenGui.Parent = gethiddengui() or gethui() or cloneref(game:GetService("CoreGui"))
+		ScreenGui.Parent = CoreGui
 		ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 		ScreenGui.Name = "Error"
 
