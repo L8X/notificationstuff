@@ -16,7 +16,7 @@ local CoreGui = cloneref(game:GetService("CoreGui"))
 local Debris = cloneref(game:GetService("Debris"))
 
 return function(Arguments)
-	task.spawn(coroutine.create(function()
+	coroutine.resume(coroutine.create(function()
 		local Text = Arguments.Text or "lorem ipsum"
 		local Duration = Arguments.Duration or 5
 
