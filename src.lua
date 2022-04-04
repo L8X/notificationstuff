@@ -7,9 +7,13 @@ notify({
 
 ]]
 
-local TweenService = game:GetService("TweenService")
-local CoreGui = game:GetService("CoreGui")
-local Debris = game:GetService("Debris")
+local cloneref = cloneref or function(ref) 
+    return ref
+end
+
+local TweenService = cloneref(game:GetService("TweenService"))
+local CoreGui = gethiddengui() or gethui() or cloneref(game:GetService("CoreGui"))
+local Debris = cloneref(game:GetService("Debris"))
 
 return function(Arguments)
 	coroutine.resume(coroutine.create(function()
@@ -18,7 +22,7 @@ return function(Arguments)
 
 		-- Instances:
 
-		local ScreenGui = CoreGui:FindFirstChild("Error") or Instance.new("ScreenGui",CoreGui)
+		local ScreenGui = CoreGui:FindFirstChild("Error") or Instance.new("ScreenGui", CoreGui)
 		local ErrorMessage = Instance.new("Frame")
 		local TextSizeConstraint = Instance.new("UISizeConstraint")
 		local AsspectRatioConstraint = Instance.new("UIAspectRatioConstraint")
@@ -36,7 +40,7 @@ return function(Arguments)
 			Tween:Play()
 		end
 
-		ScreenGui.Parent = game:GetService("CoreGui")
+		ScreenGui.Parent = gethiddengui() or gethui() or cloneref(game:GetService("CoreGui"))
 		ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 		ScreenGui.Name = "Error"
 
