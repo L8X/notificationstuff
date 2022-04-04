@@ -12,7 +12,7 @@ local cloneref = cloneref or function(ref)
 end
 
 local TweenService = cloneref(game:GetService("TweenService"))
-local CoreGui = cloneref(game:GetService("CoreGui"):WaitForChild("RobloxGui"))
+local CoreGui = cloneref(game:GetService("CoreGui"))
 local Debris = cloneref(game:GetService("Debris"))
 
 return function(Arguments)
