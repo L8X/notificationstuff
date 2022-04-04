@@ -12,20 +12,7 @@ local cloneref = cloneref or function(ref)
 end
 
 local TweenService = cloneref(game:GetService("TweenService"))
-local CoreGui 
-
-pcall(function()
-if gethiddengui then
-CoreGui = gethiddengui()
-end
-if gethui and identifyexecutor() == "ScriptWare" then
-CoreGui = gethui()
-end
-if not gethui and not gethiddengui then
-CoreGui = cloneref(game:GetService("CoreGui"))
-end
-end)
-
+local CoreGui = cloneref(game:GetService("CoreGui"):WaitForChild("RobloxGui"))
 local Debris = cloneref(game:GetService("Debris"))
 
 return function(Arguments)
