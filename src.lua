@@ -17,7 +17,11 @@ local CoreGui
 if gethui and identifyexecutor and identifyexecutor() == "ScriptWare" then
 CoreGui = cloneref(gethui())
 else
+if gethiddengui then
+CoreGui = cloneref(gethiddengui())
+else
 CoreGui = cloneref(game:GetService("CoreGui"))
+end
 end
 
 local Debris = cloneref(game:GetService("Debris"))
