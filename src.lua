@@ -7,6 +7,9 @@ notify({
 
 ]]
 
+local task = task
+local task_wait = task.wait
+
 local cloneref = cloneref or function(ref) 
     return ref
 end
@@ -14,13 +17,13 @@ end
 local TweenService = cloneref(game:GetService("TweenService"))
 local CoreGui
 
-if gethui and identifyexecutor and identifyexecutor() == "ScriptWare" then
-CoreGui = cloneref(gethui())
-else
 if gethiddengui then
 CoreGui = cloneref(gethiddengui())
 else
-CoreGui = cloneref(game:GetService("CoreGui"))
+if gethui and identifyexecutor and identifyexecutor() == "ScriptWare" then
+CoreGui = cloneref(gethui())
+else
+CoreGui = cloneref(game:GetService("CoreGui"):FindFirstChildOfClass("ScreenGui") or game:GetService("CoreGui"):FindFirstChildOfClass("Folder"))
 end
 end
 
@@ -33,7 +36,7 @@ return function(Arguments)
 
 		-- Instances:
 
-		local ScreenGui = CoreGui:FindFirstChild("Error") or Instance.new("ScreenGui", CoreGui)
+		local ScreenGui = CoreGui:FindFirstChild("Error") or cloneref(Instance.new("ScreenGui", CoreGui))
 		local ErrorMessage = cloneref(Instance.new("Frame"))
 		local TextSizeConstraint = cloneref(Instance.new("UISizeConstraint"))
 		local AsspectRatioConstraint = cloneref(Instance.new("UIAspectRatioConstraint"))
@@ -46,7 +49,7 @@ return function(Arguments)
 		--Properties:
 
 		local Children = ScreenGui:GetChildren()
-		for i,v in pairs(Children) do
+		for i, v in pairs(Children) do
 			local Tween = TweenService:Create(v,TweenInfo.new(0.5,Enum.EasingStyle.Quad,Enum.EasingDirection.Out),{Position = UDim2.new(ErrorMessage.Position.X.Scale, 0, .1, (i*v.AbsoluteSize.Y*1.2))})
 			Tween:Play()
 		end
@@ -109,11 +112,11 @@ return function(Arguments)
 		Debris:AddItem(ErrorMessage, Duration+3)
 		local Tween = TweenService:Create(ErrorMessage,TweenInfo.new(1,Enum.EasingStyle.Quad,Enum.EasingDirection.Out),{Position = UDim2.new(0, 0, 0, ErrorMessage.AbsolutePosition.Y)})
 		Tween:Play()
-		task.wait(0.6)
+		task_wait(0.6)
 		local IconTween = TweenService:Create(ErrorIcon,TweenInfo.new(1,Enum.EasingStyle.Quad,Enum.EasingDirection.Out),{Rotation = 0})
 		IconTween:Play()
-		task.wait(0.4)
-		wait(Duration)
+		task_wait(0.4)
+		task_wait(Duration)
 		Tween = TweenService:Create(ErrorMessage,TweenInfo.new(1,Enum.EasingStyle.Quad,Enum.EasingDirection.In),{Position = UDim2.new(-1, 0, 0, ErrorMessage.AbsolutePosition.Y)})
 		Tween:Play()
 	end))
