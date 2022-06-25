@@ -7,9 +7,14 @@ notify({
 
 ]]
 
-local task = task
-local task_wait = task.wait
-
+local game = game or nil
+local task = task or nil
+local task_wait = task.wait or nil
+local task_spawn = task.spawn or nil
+local coroutine = coroutine or nil
+local coroutine_create = coroutine.create or nil
+local Vector2 = Vector2 or nil
+local identifyexecutor = identifyexecutor or nil
 local cloneref = cloneref or function(ref) 
     return ref
 end
@@ -30,7 +35,7 @@ end
 local Debris = cloneref(game:GetService("Debris"))
 
 return function(Arguments)
-	coroutine.resume(coroutine.create(function()
+	task_spawn(coroutine_create(function()
 		local Text = Arguments.Text or "lorem ipsum"
 		local Duration = Arguments.Duration or 5
 
